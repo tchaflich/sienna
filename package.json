@@ -11,9 +11,12 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.5.5",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "eslint": "^6.1.0",
     "eslint-loader": "^2.2.1",
+    "eslint-plugin-jsdoc": "^15.7.2",
     "eslint-plugin-react": "^7.14.3",
     "mocha": "^6.2.0",
     "mocha-loader": "^2.0.1",
@@ -21,7 +24,7 @@
     "webpack-cli": "^3.3.6"
   },
   "scripts": {
-    "test": "npx mocha test/",
+    "test": "npx mocha --require @babel/register test/",
     "lint": "npx eslint src/js/",
     "build": "npm run test && npm run lint && npx webpack"
   },
