@@ -1,4 +1,4 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import Color from '../Color';
 
 class Adder extends Component {

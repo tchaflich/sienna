@@ -1,0 +1,29 @@
+
+
+// https://css-tricks.com/box-sizing/
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+// frowny face @ default margin
+body {
+	margin: 0;
+}
+
+html, body, #background {
+	height: 100%;
+	// todo font later
+}
+
+#root {
+	min-height: 100%;
+	background-color: #c0ffee;
+}
+
+.App {
+	// notta
+}
+
