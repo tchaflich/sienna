@@ -289,6 +289,34 @@ describe('Output formatting', () => {
 
 	});
 
+	describe('getHSVString', () => {
+
+		it('Outputs an HSV string of format HSV(h°, s%, v%)', () => {
+			const black = new Color('000');
+			assert.equal(black.getHSVString(), 'HSV(0°, 0%, 0%)');
+
+			const white = new Color('#fff');
+			assert.equal(white.getHSVString(), 'HSV(0°, 0%, 100%)');
+
+			const coffee = new Color('#c0ffee');
+			assert.equal(coffee.getHSVString(), 'HSV(164°, 25%, 100%)');
+
+			const minty = new Color({'red': 20, 'green': 230, 'blue': 180});
+			assert.equal(minty.getHSVString(), 'HSV(166°, 91%, 90%)');
+
+			// this is to prove that the keys don't matter
+			const brownish = new Color({
+				'blue': 16,
+				'red': 100,
+				'foobar': 'LOL',
+				'green': 27,
+				'GREEN': 255,
+			});
+			assert.equal(brownish.getHSVString(), 'HSV(8°, 84%, 39%)');
+		});
+
+	});
+
 });
 
 

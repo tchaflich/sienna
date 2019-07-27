@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Chip from './Chip.js';
+
 class Seeds extends Component {
 
 	/**
@@ -13,10 +15,10 @@ class Seeds extends Component {
 	}
 
 	renderColor (color) {
-		return <li
+		return <Chip
 			key={color.getHexString()}
-			onClick={() => this.props.onRemove(color)}
-		>{color.getHexString()}</li>
+			color={color}
+		/>
 	}
 
 	render () {
@@ -25,10 +27,8 @@ class Seeds extends Component {
 		});
 
 		return (
-			<div className="Seeds">
-				<ul>
-					{listItems}
-				</ul>
+			<div className="Seeds chip-grid">
+				{listItems}
 			</div>
 		);
 	}

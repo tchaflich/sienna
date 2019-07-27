@@ -8,9 +8,9 @@ html {
 	box-sizing: inherit;
 }
 
-// frowny face @ default margin
 body {
-	margin: 0;
+	margin: 0; // frowny face @ default margin
+	font-family: $font-stack-sans;
 }
 
 html, body, #background {
@@ -20,10 +20,6 @@ html, body, #background {
 
 #root {
 	min-height: 100%;
-	background-color: #c0ffee;
-}
-
-.App {
-	// notta
+	background-color: #888;
 }
 

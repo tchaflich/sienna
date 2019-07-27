@@ -355,7 +355,7 @@ class Color {
 		 * @param {number} dec
 		 */
 		function convertDecToHex(dec) {
-			let hex = dec.toString(16);
+			let hex = Math.round(dec).toString(16);
 			while (hex.length < 2) {
 				hex = '0' + hex;
 			}
@@ -376,15 +376,34 @@ class Color {
 	 * Example: Red => "RGB(255, 0, 0)"
 	 * The letters "RGB" will be uppercase
 	 * The commas will have a trailing space
+	 * Numeric values will be integers (rounded)
 	 *
 	 * @returns {string}
 	 */
 	getRGBString() {
 		return (
 			'RGB(' +
-			this.getRed() + ', ' +
-			this.getGreen() + ', ' +
-			this.getBlue() + ')'
+			Math.round(this.getRed()) + ', ' +
+			Math.round(this.getGreen()) + ', ' +
+			Math.round(this.getBlue()) + ')'
+		);
+	}
+
+	/**
+	 * Returns an HSV string in the format HSV(h°, s%, v%)
+	 * Example: Red => "HSV(0°, 100%, 100%)"
+	 * The letters "HSV" will be uppercase
+	 * The commas will have a trailing space
+	 * Numeric values will be integers (rounded)
+	 *
+	 * @returns {string}
+	 */
+	getHSVString() {
+		return (
+			'HSV(' +
+			Math.round(this.getHue()) + '°, ' +
+			Math.round(this.getSaturation()) + '%, ' +
+			Math.round(this.getValue()) + '%)'
 		);
 	}
 

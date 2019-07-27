@@ -1,0 +1,41 @@
+
+.Chip {
+
+	border-radius: 4px;
+	overflow: hidden;
+	font-size: 1rem;
+
+	box-shadow:
+		0 0 2px rgba(0, 0, 0, 0.16),
+		-2px 2px 4px rgba(0, 0, 0, 0.25);
+
+	& .top {
+		padding: 1rem;
+		padding-bottom: 0.5rem;
+		font-family: $font-stack-serif;
+		font-size: 0.8rem;
+	}
+	& .top .color-name {
+		font-size: 1.1rem;
+	}
+
+	& .bottom {
+		padding: 1rem;
+		padding-top: 0.5rem;
+		background-color: white;
+		line-height: 1.2rem;
+		font-size: 0.9rem;
+	}
+
+}
+
+// for use with seeds & palette
+.chip-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 6px;
+	margin-left: 12px;
+	margin-right: 12px;
+}
+
+
