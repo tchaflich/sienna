@@ -22,6 +22,15 @@ class Seeds extends Component {
 	}
 
 	render () {
+		if (!this.props.colors.length) {
+			return (
+				<div className="Seeds">
+					<p>Nothing here yet</p>
+					<p>Add using the input above</p>
+				</div>
+			)
+		}
+
 		const listItems = this.props.colors.map((color) => {
 			return this.renderColor(color);
 		});

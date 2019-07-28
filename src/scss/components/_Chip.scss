@@ -5,6 +5,8 @@
 	overflow: hidden;
 	font-size: 1rem;
 
+	text-align: left;
+
 	box-shadow:
 		0 0 2px rgba(0, 0, 0, 0.16),
 		-2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -27,6 +29,7 @@
 		font-size: 0.8rem;
 	}
 	& .bottom .description {
+		color: darken($background-color, 30);
 		font-size: 1rem;
 		line-height: 1.4rem;
 	}

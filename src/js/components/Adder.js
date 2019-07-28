@@ -84,20 +84,22 @@ class Adder extends Component {
 
 		return (
 			<div className="Adder">
-				<input
-					type="text"
-					placeholder="#c0ffee, #7ea, etc"
-					className={illumination}
-					value={this.state.inputValue}
-					onChange={this.handleInputUpdate}
-					onKeyDown={this.handleInputKeyDown}
-				/>
+				<div className="width-container">
+					<input
+						type="text"
+						placeholder="#c0ffee, #7ea, etc"
+						className={illumination}
+						value={this.state.inputValue}
+						onChange={this.handleInputUpdate}
+						onKeyDown={this.handleInputKeyDown}
+					/>
 
-				<button
-					style={styles}
-					className={illumination}
-					onClick={this.handleButtonClick}
-				>Add</button>
+					<button
+						style={styles}
+						className={illumination}
+						onClick={this.handleButtonClick}
+					>Add</button>
+				</div>
 			</div>
 		);
 	}

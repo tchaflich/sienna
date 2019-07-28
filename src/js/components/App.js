@@ -4,6 +4,7 @@ import Adder from './Adder.js';
 import Palette from './Palette.js';
 import Seeds from './Seeds.js';
 import Color from './../Color.js'
+import Generator from './Generator.js';
 
 // todo: import CSS
 
@@ -20,10 +21,12 @@ class App extends Component {
 
 		this.state = {
 			'colors': [],
+			'palette': [],
 		};
 
 		this.addColor = this.addColor.bind(this);
 		this.removeColor = this.removeColor.bind(this);
+		this.generatePalette = this.generatePalette.bind(this);
 	}
 
 	/**
@@ -91,6 +94,17 @@ class App extends Component {
 	}
 
 
+	generatePalette() {
+		const colors = this.state.colors.slice();
+		const palette = colors.slice();
+
+		this.setState({
+			'colors': colors,
+			'palette': palette,
+		});
+	}
+
+
 	render () {
 		return (
 			<div className='App'>
@@ -105,8 +119,13 @@ class App extends Component {
 					onRemove={(color) => this.removeColor(color)}
 				/>
 
+				<Generator
+					onClick={() => this.generatePalette()}
+					hasPalette={this.state.palette.length > 0}
+				/>
+
 				<Palette
-					colors={this.state.colors}
+					colors={this.state.palette}
 				/>
 			</div>
 		);

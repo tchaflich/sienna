@@ -3,6 +3,7 @@
 // https://css-tricks.com/box-sizing/
 html {
 	box-sizing: border-box;
+	font-size: 16px;
 }
 *, *:before, *:after {
 	box-sizing: inherit;
@@ -13,13 +14,22 @@ body {
 	font-family: $font-stack-sans;
 }
 
+@media only screen and (max-width: 600px) {
+	html {
+		font-size: 14px;
+	}
+}
+
 html, body, #background {
 	height: 100%;
 	// todo font later
 }
 
+$background-color: #AAABAF;
+$input-max-width: 800px;
+
 #root {
 	min-height: 100%;
-	background-color: #AAABAF;
+	background-color: $background-color;
 }
 
