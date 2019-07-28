@@ -337,6 +337,24 @@ class Color {
 	}
 
 
+	/**
+	 * Get the perceived brightness of a color
+	 * Corrects for the human eye's differing sensitivity to color
+	 * Green appears very bright, red is pretty bright,
+	 * and blue is downright *dark*
+	 *
+	 * http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+	 *
+	 * @returns {number} [0-255]
+	 */
+	getBrightness() {
+		return Math.sqrt(
+			(0.241 * Math.pow(this.getRed(), 2)) +
+			(0.691 * Math.pow(this.getGreen(), 2)) +
+			(0.068 * Math.pow(this.getBlue(), 2))
+		);
+	}
+
 	// output formatting
 
 

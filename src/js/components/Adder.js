@@ -83,7 +83,7 @@ class Adder extends Component {
 		};
 
 		return (
-			<div className="Adder" style={styles}>
+			<div className="Adder">
 				<input
 					type="text"
 					placeholder="#c0ffee, #7ea, etc"
@@ -94,6 +94,7 @@ class Adder extends Component {
 				/>
 
 				<button
+					style={styles}
 					className={illumination}
 					onClick={this.handleButtonClick}
 				>Add</button>

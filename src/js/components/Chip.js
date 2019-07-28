@@ -51,8 +51,12 @@ class Chip extends Component {
 			return 'plain';
 		}
 
-		if (saturation >= 25) {
+		if (saturation >= 30) {
 			return 'soft';
+		}
+
+		if (saturation >= 15) {
+			return 'muted';
 		}
 
 		return 'grey';
@@ -109,18 +113,18 @@ class Chip extends Component {
 	/**
 	 * Is this color dark or light?
 	 * You'd think that this would be based on value,
-	 * But it's actually based on relative luminance
+	 * But it's actually based on perceived brightness
 	 *
 	 * @returns {string}
 	 */
-	getColorLightness() {
-		const luminance = this.props.color.getRelativeLuminance();
+	getColorIllumination() {
+		const weightedValue = this.props.color.getBrightness(); // [0-255]
 
-		if (luminance >= 0.6) {
+		if (weightedValue >= 150) {
 			return 'light';
 		}
 
-		if (luminance <= 0.4) {
+		if (weightedValue <= 100) {
 			return 'dark';
 		}
 
@@ -130,12 +134,12 @@ class Chip extends Component {
 	render () {
 		const topStyle = {
 			'backgroundColor': this.getColorHexString(),
-			'color': this.getColorLightness() === 'light' ? '#212121' : 'white',
+			'color': this.getColorIllumination() === 'light' ? '#212121' : 'white',
 		};
 
 		const vibrance = this.getColorVibrance();
 		const temperature = this.getColorTemperature();
-		const lightness = this.getColorLightness();
+		const illumination = this.getColorIllumination();
 
 		const hex = this.getColorHexString();
 		const rgb = this.getColorRGBString();
@@ -150,7 +154,7 @@ class Chip extends Component {
 					<div>{hex}</div>
 				</div>
 				<div className="bottom">
-					<div>{vibrance}, {temperature}, {lightness}</div>
+					<div className="description">{vibrance}, {temperature}, {illumination}</div>
 					<div>{rgb}</div>
 					<div>{hsv}</div>
 				</div>
