@@ -289,14 +289,12 @@ class Color {
 		}
 
 		const HSV = {
-			'hue': num(matched[1]) % 360,
+			'hue': num(matched[1]),
 			'saturation': checkSV(num(matched[2])),
 			'value': checkSV(num(matched[3])),
 		};
 
-		while (HSV.hue < 0) {
-			HSV.hue = (HSV.hue + 360);
-		}
+		HSV.hue = Color.getNormalizedHue(HSV.hue);
 
 		return HSV;
 	}
@@ -401,21 +399,28 @@ class Color {
 			}
 		}
 
-		// normalize hue to standard degrees
-		// [0-360)
+		// normalize hue to standard degrees [0-360)
 
-		// normalize saturation and value to percentages
+		// normalize saturation and value to percentages [0-100]
 
-		hue = (hue * 60) % 360;
-		while (hue < 0) {
-			hue = (hue + 360);
-		}
+		hue = Color.getNormalizedHue(hue * 60);
 
 		return {
 			'hue': Math.round(hue),
 			'saturation': Math.round(saturation * 100),
 			'value': Math.round(value * 100),
 		};
+	}
+
+
+	static getNormalizedHue(hue) {
+		var n = hue % 360;
+
+		while (n < 0) {
+			n += 360;
+		}
+
+		return n;
 	}
 
 

@@ -7,6 +7,8 @@
 
 	text-align: left;
 
+	background-color: white;
+
 	box-shadow:
 		0 0 2px rgba(0, 0, 0, 0.16),
 		-2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -24,7 +26,7 @@
 	& .bottom {
 		padding: 1rem;
 		padding-top: 0.5rem;
-		background-color: white;
+		color: #212121;
 		line-height: 1.2rem;
 		font-size: 0.8rem;
 	}
@@ -39,7 +41,7 @@
 // for use with seeds & palette
 .chip-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 	grid-gap: 6px;
 	margin-left: 12px;
 	margin-right: 12px;
