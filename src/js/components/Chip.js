@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Saffron from './../Saffron';
+
 class Chip extends Component {
 
 	/**
@@ -15,7 +17,9 @@ class Chip extends Component {
 	}
 
 	getColorName() {
-		return '[todo color name]';
+		const row = Saffron.getClosestMatch(this.props.color);
+
+		return row.name;
 	}
 
 	getColorHexString() {
