@@ -1,0 +1,134 @@
+/*
+
+In this house
+  (')) ^v^  _ we import  (`)_
+(__)_) ,--j j-------, (__)_)
+      /_.-.___.-.__/ \   a lot of
+    ,8| [_],-.[_] | oOo    scss files!
+,,,oO8|_o8_|_|_8o_|&888o,,,
+
+https://www.asciiart.eu/buildings-and-places/houses
+The twitter meme doesn't work in monospace :(
+
+*/
+html {
+  box-sizing: border-box;
+  font-size: 16px; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif; }
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 14px; } }
+
+html, body, #background {
+  height: 100%; }
+
+#root {
+  min-height: 100%;
+  background-color: #AAABAF; }
+
+input[type="text"] {
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 1px solid transparent;
+  transition: all 300ms ease-in-out;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #212121; }
+  input[type="text"]:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); }
+
+button {
+  border: 0;
+  height: 2.4rem;
+  font-family: "Roboto Mono", monospace;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  transition: all 300ms ease-in-out;
+  cursor: pointer; }
+  button.dark {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #212121; }
+  button.light {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white; }
+
+.Chip {
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 1rem;
+  text-align: left;
+  background-color: white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.16), -2px 2px 4px rgba(0, 0, 0, 0.25); }
+  .Chip .top {
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+    font-family: "Merriweather", serif;
+    font-size: 0.8rem; }
+  .Chip .top .color-name {
+    font-size: 1.1rem; }
+  .Chip .bottom {
+    padding: 1rem;
+    padding-top: 0.5rem;
+    color: #212121;
+    line-height: 1.2rem;
+    font-size: 0.8rem; }
+  .Chip .bottom .description {
+    color: #5d5e63;
+    font-size: 1rem;
+    line-height: 1.4rem; }
+
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 6px;
+  margin-left: 12px;
+  margin-right: 12px; }
+
+.Seeds {
+  text-align: center;
+  color: #5d5e63; }
+
+.Adder {
+  padding: 12px;
+  transition: all 300ms ease-in-out;
+  margin-bottom: 12px;
+  background-color: #909196; }
+  .Adder > .width-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; }
+  .Adder input {
+    flex: 1;
+    text-align: center;
+    height: 2.4rem;
+    font-family: "Roboto Mono", monospace;
+    vertical-align: middle;
+    font-size: 1.2rem; }
+  .Adder button {
+    width: 6rem;
+    max-width: 25%; }
+
+.Generator {
+  padding: 12px;
+  transition: all 300ms ease-in-out;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  text-align: center;
+  background-color: #909196; }
+  .Generator button {
+    width: 100%;
+    max-width: 800px; }
+    .Generator button:hover {
+      background-image: linear-gradient(75deg, rgba(255, 0, 0, 0.3), rgba(255, 128, 0, 0.3), rgba(255, 255, 0, 0.3), rgba(0, 255, 0, 0.3), rgba(0, 0, 255, 0.3), rgba(128, 0, 255, 0.3), rgba(255, 0, 255, 0.3)); }
+
