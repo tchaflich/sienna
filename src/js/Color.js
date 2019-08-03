@@ -471,6 +471,14 @@ class Color {
 		return this.blue_;
 	}
 
+	getRGBObject() {
+		return {
+			'red': this.getRed(),
+			'green': this.getGreen(),
+			'blue': this.getBlue(),
+		};
+	}
+
 
 	// HSV colorspace
 
@@ -534,6 +542,15 @@ class Color {
 		}
 
 		return this.value_;
+	}
+
+
+	getHSVObject() {
+		return {
+			'hue': this.getHue(),
+			'saturation': this.getSaturation(),
+			'value': this.getValue(),
+		};
 	}
 
 
