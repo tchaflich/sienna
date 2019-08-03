@@ -18,13 +18,10 @@ The twitter meme doesn't work in monospace :(
 @import "app";
 
 // native elements & resets
-@import "input";
-@import "button";
 
 // components
-@import "components/_Chip";
-@import "components/_Seeds";
-@import "components/_Adder";
-@import "components/_Generator";
+@import "components/PaintChip";
+@import "components/Header";
+@import "components/App";
 
 

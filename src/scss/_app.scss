@@ -20,16 +20,19 @@ body {
 	}
 }
 
-html, body, #background {
+// to make the background color always be on screen,
+// and always stretch to the bottom of the screen
+html, body {
 	height: 100%;
-	// todo font later
+
+	display: flex;
+	flex-direction: column;
+
+	body > * {
+		flex-shrink: 0;
+	}
+
+	#root {
+		flex: 1;
+	}
 }
-
-$background-color: #AAABAF;
-$input-max-width: 800px;
-
-#root {
-	min-height: 100%;
-	background-color: $background-color;
-}
-

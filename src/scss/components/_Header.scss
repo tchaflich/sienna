@@ -1,0 +1,17 @@
+
+.Header {
+
+	overflow: hidden;
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	& > h1 {
+		font-family: $font-stack-serif;
+	}
+
+	& > h3 {
+		font-family: $font-stack-sans;
+	}
+
+}
+

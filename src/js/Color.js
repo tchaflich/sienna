@@ -140,7 +140,7 @@ class Color {
 			'saturation' in parseableObject &&
 			'value' in parseableObject
 		) {
-			this.hue_ = parseableObject.hue;
+			this.hue_ = Color.getNormalizedHue(parseableObject.hue);
 			this.saturation_ = parseableObject.saturation;
 			this.value_ = parseableObject.value;
 
@@ -326,7 +326,7 @@ class Color {
 	static convertHSVtoRGB(HSVObject) {
 		// https://www.rapidtables.com/convert/color/hsv-to-rgb.html
 
-		const hue = HSVObject.hue; // [0-360)
+		const hue = Color.getNormalizedHue(HSVObject.hue); // [0-360)
 		const saturation = HSVObject.saturation / 100; // [0-1]
 		const value = HSVObject.value / 100; // [0-1]
 

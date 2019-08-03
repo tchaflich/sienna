@@ -1,17 +1,17 @@
 
 import Color from '../src/js/Color';
-import Palette from '../src/js/Palette';
+import ColorScheme from '../src/js/ColorScheme';
 
 const assert = require('assert');
 
-describe('Palette class', () => {
+describe('ColorScheme class', () => {
 
 	describe('Color comparison (sort)', () => {
 
 		it('Primary sort by hue (asc)', () => {
 			// first < second
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 5, 'saturation': 50, 'value': 50}),
 					new Color({'hue': 240, 'saturation': 50, 'value': 50})
 				),
@@ -20,7 +20,7 @@ describe('Palette class', () => {
 
 			// first > second
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 240, 'saturation': 50, 'value': 50}),
 					new Color({'hue': 5, 'saturation': 50, 'value': 50})
 				),
@@ -31,7 +31,7 @@ describe('Palette class', () => {
 		it('Secondary sort by saturation (asc)', () => {
 			// first < second
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 180, 'saturation': 40, 'value': 50}),
 					new Color({'hue': 180, 'saturation': 80, 'value': 50})
 				),
@@ -40,7 +40,7 @@ describe('Palette class', () => {
 
 			// first > second
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 180, 'saturation': 80, 'value': 50}),
 					new Color({'hue': 180, 'saturation': 40, 'value': 50})
 				),
@@ -51,7 +51,7 @@ describe('Palette class', () => {
 		it('Tertiary sort by value (asc)', () => {
 			// first < second
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 180, 'saturation': 50, 'value': 40}),
 					new Color({'hue': 180, 'saturation': 50, 'value': 80})
 				),
@@ -60,7 +60,7 @@ describe('Palette class', () => {
 
 			// first > second
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 180, 'saturation': 50, 'value': 80}),
 					new Color({'hue': 180, 'saturation': 50, 'value': 40})
 				),
@@ -70,7 +70,7 @@ describe('Palette class', () => {
 
 		it('Returns 0 for colors of identical HSV values', () => {
 			assert.equal(
-				Palette.compareColors(
+				ColorScheme.compareColors(
 					new Color({'hue': 180, 'saturation': 50, 'value': 50}),
 					new Color({'hue': 180, 'saturation': 50, 'value': 50})
 				),
@@ -82,7 +82,7 @@ describe('Palette class', () => {
 
 	describe('Get relative hue list', () => {
 		it('Retrieves a list of angular distances between all hue points', () => {
-			const fiveApart = new Palette([
+			const fiveApart = new ColorScheme([
 				new Color({'hue': 5, 'saturation': 50, 'value': 50}),
 				new Color({'hue': 15, 'saturation': 50, 'value': 50}),
 				new Color({'hue': 10, 'saturation': 50, 'value': 50}),
@@ -94,10 +94,10 @@ describe('Palette class', () => {
 					10, // 5 & 15
 					5, // 5 & 10
 					5, // 15 & 10
-				].sort(Palette.compareNumeric)
+				].sort(ColorScheme.compareNumeric)
 			);
 
-			const moreDifferent = new Palette([
+			const moreDifferent = new ColorScheme([
 				new Color({'hue': 355, 'saturation': 50, 'value': 50}),
 				new Color({'hue': 10, 'saturation': 50, 'value': 50}),
 				new Color({'hue': 15, 'saturation': 50, 'value': 50}),
@@ -109,24 +109,24 @@ describe('Palette class', () => {
 					15, // 355 & 10
 					20, // 355 & 15
 					5, // 10 & 15
-				].sort(Palette.compareNumeric)
+				].sort(ColorScheme.compareNumeric)
 			);
 		});
 	});
 
 	describe('generateMonochromatic', () => {
 
-		it('Generates a palette with one color', () => {
+		it('Generates a ColorScheme with one color', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateMonochromatic(seedHue);
+			const generated = ColorScheme.generateMonochromatic(seedHue);
 
 			assert.equal(generated.getColors().length, 1);
 		});
 
-		it('The palette generated has the same hue as the seed color', () => {
+		it('The ColorScheme generated has the same hue as the seed color', () => {
 			const seedHue = 5;
-			const generated = Palette.generateMonochromatic(5);
+			const generated = ColorScheme.generateMonochromatic(5);
 
 			assert.equal(
 				generated.getColors()[0].getHue(),
@@ -137,17 +137,17 @@ describe('Palette class', () => {
 	});
 
 	describe('generateAnalogous', () => {
-		it('Generates a palette with 3 colors', () => {
+		it('Generates a ColorScheme with 3 colors', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateAnalogous(seedHue);
+			const generated = ColorScheme.generateAnalogous(seedHue);
 
 			assert.equal(generated.getColors().length, 3);
 		});
 		it('The colors generated are 30 or 60 degrees apart in hue', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateAnalogous(seedHue);
+			const generated = ColorScheme.generateAnalogous(seedHue);
 
 			assert.deepStrictEqual(
 				generated.getRelativeHueList(),
@@ -157,17 +157,17 @@ describe('Palette class', () => {
 	});
 
 	describe('generateComplementary', () => {
-		it('Generates a palette with 2 colors', () => {
+		it('Generates a ColorScheme with 2 colors', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateComplementary(seedHue);
+			const generated = ColorScheme.generateComplementary(seedHue);
 
 			assert.equal(generated.getColors().length, 2);
 		});
 		it('The colors generated are 180 degrees apart in hue', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateComplementary(seedHue);
+			const generated = ColorScheme.generateComplementary(seedHue);
 
 			assert.deepStrictEqual(
 				generated.getRelativeHueList(),
@@ -177,17 +177,17 @@ describe('Palette class', () => {
 	});
 
 	describe('generateSplitComplementary', () => {
-		it('Generates a palette with 3 colors', () => {
+		it('Generates a ColorScheme with 3 colors', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateSplitComplementary(seedHue);
+			const generated = ColorScheme.generateSplitComplementary(seedHue);
 
 			assert.equal(generated.getColors().length, 3);
 		});
 		it('The colors generated are either 60 or 150 degrees from the other colors in hue', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateSplitComplementary(seedHue);
+			const generated = ColorScheme.generateSplitComplementary(seedHue);
 
 			assert.deepStrictEqual(
 				generated.getRelativeHueList(),
@@ -197,17 +197,17 @@ describe('Palette class', () => {
 	});
 
 	describe('generateTriadic', () => {
-		it('Generates a palette with 3 colors', () => {
+		it('Generates a ColorScheme with 3 colors', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateTriadic(seedHue);
+			const generated = ColorScheme.generateTriadic(seedHue);
 
 			assert.equal(generated.getColors().length, 3);
 		});
 		it('Each color is exactly 120 degrees in hue from the others', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateTriadic(seedHue);
+			const generated = ColorScheme.generateTriadic(seedHue);
 
 			assert.deepStrictEqual(
 				generated.getRelativeHueList(),
@@ -217,43 +217,43 @@ describe('Palette class', () => {
 	});
 
 	describe('generateSquareTetradic', () => {
-		it('Generates a palette with 4 colors', () => {
+		it('Generates a ColorScheme with 4 colors', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateSquareTetradic(seedHue);
+			const generated = ColorScheme.generateSquareTetradic(seedHue);
 
 			assert.equal(generated.getColors().length, 4);
 		});
 		it('Each color is either 90 or 180 degrees in hue from the others', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateSquareTetradic(seedHue);
+			const generated = ColorScheme.generateSquareTetradic(seedHue);
 
 			assert.deepStrictEqual(
 				generated.getRelativeHueList(),
-				[90, 180, 90, 90, 180, 90].sort(Palette.compareNumeric)
+				[90, 180, 90, 90, 180, 90].sort(ColorScheme.compareNumeric)
 			);
 		});
 	});
 
 	describe('generateRectangularTetradic', () => {
-		it('Generates a palette with 4 colors', () => {
+		it('Generates a ColorScheme with 4 colors', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateRectangularTetradic(seedHue);
+			const generated = ColorScheme.generateRectangularTetradic(seedHue);
 
 			assert.equal(generated.getColors().length, 4);
 		});
 		it('Each color is either 60, 120, or 180 degrees in hue from the others', () => {
 			const seedHue = 5;
 
-			const generated = Palette.generateRectangularTetradic(seedHue);
+			const generated = ColorScheme.generateRectangularTetradic(seedHue);
 
 			assert.deepStrictEqual(
 				generated.getRelativeHueList(),
 				// [geometry intensifies]
 				// i drew this out on a sheet of paper and listed AB, AC, AD ... etc
-				[60, 180, 120, 120, 180, 60].sort(Palette.compareNumeric)
+				[60, 180, 120, 120, 180, 60].sort(ColorScheme.compareNumeric)
 			);
 		});
 	});

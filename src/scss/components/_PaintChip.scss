@@ -1,0 +1,50 @@
+
+$chip-dimension: 1.6rem;
+
+.PaintChip {
+
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+
+	// border: 1px solid white;
+	box-shadow:
+		0 0 2px rgba(0, 0, 0, 0.16),
+		-1px 1px 1px rgba(0, 0, 0, 0.20);
+
+	& > .tiny-chip {
+		min-height: $chip-dimension;
+		line-height: $chip-dimension;
+
+		&.main {
+			min-height: 4 * $chip-dimension;
+		}
+
+		display: flex;
+		justify-content: flex-start;
+		align-items: center; // just in case something overflows
+		padding-left: 1em;
+		padding-right: 1em;
+
+		& > .hex, & > .hsv {
+			padding-right: 1em;
+			font-family: $font-stack-mono;
+			min-width: 10%;
+		}
+
+		& > .name {
+			flex: 1;
+			text-align: right;
+		}
+	}
+
+}
+
+@media only screen and (max-width: 400px) {
+	.PaintChip .hsv {
+		display: none;
+	}
+}
+
+
