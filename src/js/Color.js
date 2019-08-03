@@ -27,6 +27,11 @@ class Color {
 
 		// pass to the appropriate parsing function based on type
 
+		if (parseable instanceof Color) {
+			this.parseColor_(parseable);
+			return;
+		}
+
 		const type = (
 			Object.prototype.toString.call(parseable)
 				.replace(/^\[object ([a-z]+)\]$/i, '$1')
@@ -147,6 +152,18 @@ class Color {
 		}
 
 		throw new Error('Cannot determine color object type');
+	}
+
+
+	/**
+	 * Copy another Color object sent to the constructor
+	 *
+	 * @param {Color} parseableColor
+	 */
+	parseColor_(parseableColor) {
+		this.red_ = parseableColor.getRed();
+		this.blue_ = parseableColor.getBlue();
+		this.green_ = parseableColor.getGreen();
 	}
 
 
